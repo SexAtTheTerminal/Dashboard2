@@ -1,0 +1,57 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Responsive Dashboard
+    link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet")
+    link(rel="stylesheet" href="/css/style.css")
+  
+  body
+    .container
+      aside
+        .top
+          .logo
+            img(src="img/imageLogo.png")
+            h2.text-muted Group
+              span.danger Six
+          .close#close-btn
+            span.material-symbols-outlined close
+
+        .sidebar
+          a.active(href="#")
+            span.material-symbols-outlined grid_view
+            h3 Dashboard
+
+      //- MAIN SECTION
+      main
+        h1 Servicios de hosting
+        .date
+          input(type="date")
+
+        .insights
+          //- SALES SECTION
+          each task in tasks
+            div.sales
+              span.material-symbols-outlined(style="background-color: transparent; padding: 10px; border: 2px solid black;")
+                img(src=`${task.imagen}`, alt="Imagen", width="100", height="50")
+              div.middle
+                div.left
+                  h3 
+                    a(href=`/edit/${task.id}`) #{task.title}
+                  p.parrafo #{task.descripcion}
+              a.delete-button(href=`/delete/${task.id}`) Eliminar
+        a.add-button(href="/add") Agregar Servicio
+      //- RIGHT SECTION
+      .right
+        .top
+          button#menu-btn
+            span.material-symbols-outlined menu
+          .profile
+            .info
+              p Hey, 
+                b Frac0nesy
+              small.text-muted Admin
+            .profile-photo
+              img(src="img/Img1P.JPG")
+    script(src="script.js")
